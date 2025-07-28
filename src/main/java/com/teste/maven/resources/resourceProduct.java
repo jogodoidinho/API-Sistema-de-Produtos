@@ -1,13 +1,11 @@
 package com.teste.maven.resources;
 
+import com.teste.maven.entities.PriceJson;
 import com.teste.maven.entities.Product;
 import com.teste.maven.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +29,12 @@ public class resourceProduct {
     public ResponseEntity<Product> findOne(@PathVariable Long id) {
         Product Product = service.findOne(id);
         return ResponseEntity.ok().body(Product);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Product> changePrice(@PathVariable Long id,@RequestBody PriceJson price){
+        Product product = service.changePrice(id,price.getPrice());
+        return ResponseEntity.ok().body(product);
+
     }
 }

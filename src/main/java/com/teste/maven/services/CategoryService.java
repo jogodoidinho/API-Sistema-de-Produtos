@@ -2,6 +2,8 @@ package com.teste.maven.services;
 
 import com.teste.maven.entities.Category;
 import com.teste.maven.repositories.CategoryRepository;
+import com.teste.maven.services.exception.ResourceCannotBeDeleted;
+import com.teste.maven.services.exception.ResourceCantBeModifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +24,6 @@ public class CategoryService {
         Optional<Category> obj = CategoryRepository.findById(id);
         return obj.get();
     }
+
+
 }
