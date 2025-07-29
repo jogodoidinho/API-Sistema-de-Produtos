@@ -2,6 +2,7 @@ package com.teste.maven.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -17,12 +18,13 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome Nao Pode Ser Vazio")
     private String name;
     @ManyToMany(mappedBy = "categories")
     @JsonIgnore
     private Set<Product> products = new HashSet<>();
 
-    public Category(){};
+    public Category(){}
 
     public Category(Long id, String name) {
         this.id = id;

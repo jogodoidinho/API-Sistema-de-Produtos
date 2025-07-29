@@ -3,6 +3,7 @@ package com.teste.maven.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,9 +17,13 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    @NotBlank(message = "Nome Nao Pode Ser Vazio")
     private String name;
+    @NotBlank(message = "Email Nao Pode Ser Vazio")
     private String email;
+    @NotBlank(message = "Phone Nao Pode Ser Vazio")
     private String phone;
+    @NotBlank(message = "Senha Nao Pode Estar Vazia")
     private String password;
 
     @OneToMany(mappedBy = "client")

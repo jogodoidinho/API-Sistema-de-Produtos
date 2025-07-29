@@ -35,21 +35,22 @@ public class resourceProduct {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Product> changePrice(@PathVariable Long id,@RequestBody PriceJson price){
-        Product product = service.changePrice(id,price.getPrice());
+    public ResponseEntity<Product> changePrice(@PathVariable Long id, @RequestBody PriceJson price) {
+        Product product = service.changePrice(id, price.getPrice());
         return ResponseEntity.ok().body(product);
 
     }
 
     @PostMapping()
-    public ResponseEntity<Product> addProduct(@RequestBody @Valid Product product){
+    public ResponseEntity<Product> addProduct(@RequestBody @Valid Product product) {
         Product x = service.addProduct(product);
         return ResponseEntity.ok().body(x);
     }
 
     @PutMapping()
-    public ResponseEntity<Product> modifierProduct(@RequestBody @Valid Product product){
+    public ResponseEntity<Product> modifierProduct(@RequestBody @Valid Product product) {
         Product x = service.modifierProduct(product);
         return ResponseEntity.ok().body(x);
     }
+
 }

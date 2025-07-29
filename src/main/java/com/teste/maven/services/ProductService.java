@@ -3,6 +3,7 @@ package com.teste.maven.services;
 import com.teste.maven.entities.Product;
 import com.teste.maven.repositories.ProductRepository;
 import com.teste.maven.services.exception.ResourceCantBeModifier;
+import com.teste.maven.services.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class ProductService {
 
     public Product findOne(Long id){
         Optional<Product> obj = productRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
     public Product changePrice(Long Id,Double price){
         if(price <= 0){
@@ -44,6 +45,6 @@ public class ProductService {
         }catch (RuntimeException e){
             return null;
         }
-
     }
+
 }

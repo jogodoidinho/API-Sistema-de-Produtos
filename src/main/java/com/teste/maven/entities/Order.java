@@ -3,6 +3,8 @@ package com.teste.maven.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.teste.maven.entities.enums.OrderStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -25,6 +27,8 @@ public class Order implements Serializable {
     @JoinColumn(name = "Client_ID")
     private User client;
 
+    @NotNull
+    @Min(1)
     private Integer status;
 
     @OneToMany(mappedBy = "id.order")
