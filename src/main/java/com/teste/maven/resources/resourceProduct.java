@@ -46,4 +46,10 @@ public class resourceProduct {
         Product x = service.addProduct(product);
         return ResponseEntity.ok().body(x);
     }
+
+    @PutMapping()
+    public ResponseEntity<Product> modifierProduct(@RequestBody @Valid Product product){
+        Product x = service.modifierProduct(product);
+        return ResponseEntity.ok().body(x);
+    }
 }

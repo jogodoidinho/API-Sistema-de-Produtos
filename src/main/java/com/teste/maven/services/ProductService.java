@@ -37,6 +37,13 @@ public class ProductService {
         }catch (RuntimeException e){
             return null;
         }
+    }
+    public Product modifierProduct(Product product){
+        try {
+            return productRepository.save(product);
+        }catch (RuntimeException e){
+            return null;
+        }
 
     }
 }
