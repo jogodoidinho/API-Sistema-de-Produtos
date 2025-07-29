@@ -2,6 +2,8 @@ package com.teste.maven.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -15,8 +17,14 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
+
+    @NotBlank(message = "Nome Nao Pode Ser Vazio")
     private String name;
+    @NotBlank(message = "Descricao Nao Pode Ser Vazia")
     private String description;
+    @NotNull
+    @Min(1)
     private Double price;
     private String imgUrl;
 

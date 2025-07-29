@@ -3,9 +3,12 @@ package com.teste.maven.resources;
 import com.teste.maven.entities.PriceJson;
 import com.teste.maven.entities.Product;
 import com.teste.maven.services.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
 
 import java.util.List;
 
@@ -36,5 +39,11 @@ public class resourceProduct {
         Product product = service.changePrice(id,price.getPrice());
         return ResponseEntity.ok().body(product);
 
+    }
+
+    @PostMapping()
+    public ResponseEntity<Product> addProduct(@RequestBody @Valid Product product){
+        Product x = service.addProduct(product);
+        return ResponseEntity.ok().body(x);
     }
 }
